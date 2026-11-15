@@ -1,0 +1,42 @@
+LOJA DRICA — PAGAMENTO PIX ESTÁTICO (VERSÃO PARA CONFIGURAÇÃO)
+
+O DESIGN ORIGINAL DA LOJA E O LOGIN FORAM PRESERVADOS.
+
+ATENÇÃO: Nome real e cidade do titular NÃO foram fornecidos. Portanto a geração
+está bloqueada até configurar estes dados, e os preços dos produtos atuais são
+ILUSTRATIVOS (não são automaticamente preços reais).
+
+PASSOS PARA TESTE REAL:
+1. Abra Loja_Drica_PIX.html em um editor de texto e localize const PRODUCTS.
+2. Atualize os valores 'price:' para os preços de venda REAIS de cada produto.
+3. Confirme que a chave +5511971992138 está cadastrada no banco correto.
+4. Execute CONFIGURAR_PIX.bat no Windows (Python necessário), informe nome
+   e cidade EXATOS do titular, e confirme que revisou o catálogo.
+5. Abra o arquivo Loja_Drica_PIX_Configurada.html gerado no navegador.
+6. Adicione um produto ao carrinho, finalize, selecione retirada combinada.
+7. Confira nome, chave e valor na tela de confirmação do seu aplicativo bancário.
+
+SOBRE FRETE: por padrão, a modalidade disponível é retirada combinada, SEM frete.
+Não é correto cobrar entrega sem calcular seu custo. Quando tiver valor fixo de
+frete real, configure freteCentavos em DRICA_PIX (ex.: 1200 para R$12,00).
+
+QR CODE: a imagem do QR é gerada pela API pública goQR.me/qrserver via HTTPS.
+O Pix Copia e Cola e o CRC16 são construídos localmente no navegador.
+A imagem precisa de internet; o Copia e Cola funciona mesmo se ela falhar.
+Por usar serviço terceirizado, a chave e o valor do Pix são enviados a esse
+serviço. Para produção, substitua por gerador de QR no seu servidor.
+
+STATUS: salvo como 'Aguardando pagamento' no localStorage. O site não recebe
+confirmação bancária, não emite comprovante e não deve liberar produtos apenas
+porque a cliente mostrou uma tela ou clicou em um botão.
+
+SEGURANÇA: sem backend, o preço do produto e o destino do pagamento podem ser
+alterados por alguém com acesso ao navegador. Isso NÃO é seguro para pedidos
+reais em produção. O Pix estático não cria conciliação de pedidos nem webhook.
+Para vendas reais online, implemente servidor com catálogo confiável, banco de
+dados e confirmação via PSP/API Pix e webhook assinado ou consulta autenticada.
+Se for menor de idade, utilize uma conta e um provedor de pagamentos com apoio
+do responsável e conforme os requisitos do banco.
+
+A função JS `gerarPixBRCode(centavos, txid)` segue formato EMV/BR Code, usando
+CRC16-CCITT polinômio 0x1021 e moeda BRL (986).

@@ -1,0 +1,12 @@
+LOJA DRICA — LOGIN OBRIGATÓRIO ANTES DA COMPRA
+
+1. Abra Loja_Drica_PIX.html para visualizar a vitrine.
+2. Adicione um produto ao carrinho e clique Finalizar compra via Pix.
+3. Se não estiver conectada, a cliente verá Entrar / Criar conta.
+4. Após entrar ou se cadastrar, o checkout volta automaticamente.
+5. Nome, email e dados de contato são preenchidos usando os dados da conta e os dados informados anteriormente.
+6. Pedidos são associados ao email da conta atual (neste navegador).
+
+AVISO: Contas criadas em HTML puro são SOMENTE locais e NÃO oferecem autenticação segura para vendas públicas. Perfis e pedidos ficam no navegador atual (localStorage), acessíveis a quem tiver acesso ao perfil do navegador. Para colocar a loja no ar para clientes reais, é OBRIGATÓRIO implementar autenticação e autorização no servidor, armazenamento seguro no banco de dados, HTTPS e gestão adequada da LGPD. Login Google requer configuração OAuth e backend. A confirmação Pix também deve ser verificada por backend/API.
+
+A geração Pix continua bloqueada até que o responsável configure o nome e a cidade da chave e confirme os preços reais.
